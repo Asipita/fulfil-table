@@ -9,7 +9,8 @@ function App() {
           {
             id: "234",
             label: "First",
-            isNumeric: false
+            isNumeric: false,
+            width: "50%"
           },{
             id: "234",
             label: "First",
@@ -21,7 +22,8 @@ function App() {
           },{
             id: "234",
             label: "First",
-            isNumeric: false
+            isNumeric: false,
+            width: "500px"
           },
         ]}
         rows={[

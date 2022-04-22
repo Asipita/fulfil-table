@@ -24,15 +24,22 @@ export function DataTable(props: IDataTableProps) {
   const { columns, rows, onRowClick, onSelectionChange } = props;
 
   function isNumericRow(idx: number): boolean {
-    return !!columns[idx+1].isNumeric;
+    return !!columns[idx + 1].isNumeric;
   }
 
   return (
     <section className="border rounded-lg">
-      <table className="w-full">
+      <table className="table-auto w-full">
         <thead>
-          {columns.map(({ label, isNumeric, id }: IColumnProps) => (
-            <th key={id} className="p-4 border" align={isNumeric ? "right" : "left"}>
+          {columns.map(({ label, isNumeric, id, width }: IColumnProps) => (
+            <th
+              key={id}
+              className="p-4 border"
+              align={isNumeric ? "right" : "left"}
+              style={{
+                width: width || "initial"
+              }}
+            >
               {label}
             </th>
           ))}
