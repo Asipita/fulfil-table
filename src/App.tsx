@@ -1,7 +1,16 @@
-import { DataTable } from "./components";
+import { DataTable, IRowProps } from "./components";
 
 // TO-DO make sure no two IDs are the same
 function App() {
+
+  function handleRowClick(rowData: IRowProps, rowIndex: number):void {
+    console.log({
+      rowData,
+      rowIndex
+    })
+  }
+
+
   return (
     <div className='p-8'>
       <DataTable
@@ -26,6 +35,7 @@ function App() {
             width: "500px"
           },
         ]}
+
         rows={[
           {
             id: "1",
@@ -45,8 +55,8 @@ function App() {
             price: 200
           },
         ]}
-        onRowClick={()=>alert("Row Clicked")}
-        onSelectionChange={()=>alert("Selection Changed")}
+        onSelectionChange={()=>{}}
+        onRowClick={handleRowClick}
       />
     </div>
   );
