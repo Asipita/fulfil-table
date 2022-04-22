@@ -1,7 +1,51 @@
+import { DataTable } from "./components";
+
+// TO-DO make sure no two IDs are the same
 function App() {
   return (
-    <div className='text-4xl text-gray-700 flex h-screen place-items-center place-content-center'>
-      Hello World
+    <div className='p-8'>
+      <DataTable
+        columns={[
+          {
+            id: "234",
+            label: "First",
+            isNumeric: false
+          },{
+            id: "234",
+            label: "First",
+            isNumeric: false
+          },{
+            id: "234",
+            label: "First",
+            isNumeric: true
+          },{
+            id: "234",
+            label: "First",
+            isNumeric: false
+          },
+        ]}
+        rows={[
+          {
+            id: "1",
+            product: "Bread",
+            price: 200
+          },{
+            id: "1",
+            product: "Bread",
+            price: 200
+          },{
+            id: "1",
+            product: "Bread",
+            price: 200
+          },{
+            id: "1",
+            product: "Bread",
+            price: 200
+          },
+        ]}
+        onRowClick={()=>alert("Row Clicked")}
+        onSelectionChange={()=>alert("Selection Changed")}
+      />
     </div>
   );
 }
