@@ -4,10 +4,16 @@ import { PHOTOS } from "./dummy";
 // TO-DO make sure no two IDs are the same
 function App() {
   function handleRowClick(rowData: IRowProps, rowIndex: number): void {
-    console.log({
-      rowData,
-      rowIndex,
-    });
+    // console.log({
+    //   rowData,
+    //   rowIndex,
+    // });
+  }
+
+  // Gets called everytime a row is selected, returns the selected rows
+  function handleRowSelection(rows: IRowProps[],): void {
+    // "rows" will be all the selected rows, so use rows here
+    // console.log({rows})
   }
 
   return (
@@ -36,7 +42,7 @@ function App() {
           },
         ]}
         rows={PHOTOS}
-        onSelectionChange={() => {}}
+        onSelectionChange={handleRowSelection}
         onRowClick={handleRowClick}
       />
     </div>
