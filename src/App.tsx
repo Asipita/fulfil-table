@@ -1,61 +1,42 @@
 import { DataTable, IRowProps } from "./components";
+import { PHOTOS } from "./dummy";
 
 // TO-DO make sure no two IDs are the same
 function App() {
-
-  function handleRowClick(rowData: IRowProps, rowIndex: number):void {
+  function handleRowClick(rowData: IRowProps, rowIndex: number): void {
     console.log({
       rowData,
-      rowIndex
-    })
+      rowIndex,
+    });
   }
 
-
   return (
-    <div className='p-8'>
+    <div className="p-8">
       <DataTable
         columns={[
           {
-            id: "234",
-            label: "First",
+            id: "id",
+            label: "ID",
             isNumeric: false,
-            width: "50%"
-          },{
-            id: "234",
-            label: "First",
-            isNumeric: false
-          },{
-            id: "234",
-            label: "First",
-            isNumeric: true
-          },{
-            id: "234",
-            label: "First",
-            isNumeric: false,
-            width: "500px"
           },
-        ]}
-
-        rows={[
           {
-            id: "1",
-            product: "Bread",
-            price: 200
-          },{
-            id: "1",
-            product: "Bread",
-            price: 200
-          },{
-            id: "1",
-            product: "Bread",
-            price: 200
-          },{
-            id: "1",
-            product: "Bread",
-            price: 200
+            id: "title",
+            label: "Title",
+            isNumeric: false,
+          },
+          {
+            id: "url",
+            label: "URL",
+            isNumeric: false,
+          },
+          {
+            id: "thumbnailUrl",
+            label: "Thumbnail URL",
+            isNumeric: true,
           },
         ]}
-        onSelectionChange={()=>{}}
+        rows={PHOTOS}
+        onSelectionChange={() => {}}
         onRowClick={handleRowClick}
       />
     </div>
