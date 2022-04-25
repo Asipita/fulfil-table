@@ -23,7 +23,6 @@ export default function DataRow({
   
   function handleSelectionChange(event: ChangeEvent<HTMLInputElement>): void {
     const {checked} = event.currentTarget
-    // setIsSelected(event.currentTarget.checked);
     setIsSelected(checked)
     if(checked){
       addRow(row)

@@ -1,39 +1,27 @@
 import { useRef, useState } from "react";
+import { useDeHighlightAllRows, useGetCorrespondingColumns, useGetRowProps, useHighlightAllRows, useIsNumericRow } from "../../hooks";
 import { IColumnProps, IDataTableProps, IRowProps, SelectAllRows } from "../../interfaces";
 import DataRow from "./data-row";
 
 
 export function DataTable(props: IDataTableProps) {
-  const { columns, rows, onRowClick, onSelectionChange } = props;
-  // const [selectedRows, setSelectedRows] = useState<IRowProps[]>([]);
   const [selectAllRows, setSelectAllRows] = useState<SelectAllRows>("none");
+  const { columns, rows, onRowClick, onSelectionChange } = props;
+  
+  const isNumericRow = useIsNumericRow(columns)
+  const getRowProps = useGetRowProps(columns)
+  const getCorrespondingColumn = useGetCorrespondingColumns(columns)
+  const highlightAllRows = useHighlightAllRows(rows, setSelectAllRows, addRow)
+  const deHighlightAllRows = useDeHighlightAllRows(rows, setSelectAllRows, removeRow)
+  
   let selectedRows = useRef<IRowProps[]>([]).current;
-  function isNumericRow(key: string): boolean {
-    const currentColumn = columns.find((column) => column.id === key);
-    return currentColumn?.isNumeric || false;
-  }
-
-  function getRowProps(row: any): Array<[arg1: any, arg2: any]> {
-    const tempRow = { ...row };
-    const rowKeys = Object.keys(row);
-    const columnIds = columns.map((column) => column.id);
-    for (const key of rowKeys) {
-      if (!columnIds.includes(key)) delete tempRow[key];
-    }
-
-    return Object.entries(tempRow).sort(([key]) => columnIds.indexOf(key));
-  }
-
-  function getCorrespondingColumn(index: number, row: IRowProps): string {
-    const correspondingColumn = columns[index];
-    return (row as any)[correspondingColumn.id];
-  }
 
   function addRow(row: IRowProps): void {
     const tempRows = [...selectedRows, row];
     selectedRows = tempRows;
     onSelectionChange(tempRows);
   }
+  
 
   function removeRow(rowId: string): void {
     const filteredRows = selectedRows.filter((row) => row.id !== rowId);
@@ -48,20 +36,6 @@ export function DataTable(props: IDataTableProps) {
     } else {
       deHighlightAllRows();
     }
-  }
-
-  function highlightAllRows() {
-    setSelectAllRows("all");
-    rows.forEach((row: IRowProps) => {
-      addRow(row);
-    });
-  }
-
-  function deHighlightAllRows() {
-    setSelectAllRows("none");
-    rows.forEach((row: IRowProps) => {
-      removeRow(row.id);
-    });
   }
 
   return (
