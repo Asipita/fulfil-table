@@ -26,7 +26,7 @@ export function DataTable(props: IDataTableProps) {
   const { columns, rows, onRowClick, onSelectionChange } = props;
   // const [selectedRows, setSelectedRows] = useState<IRowProps[]>([]);
   const [selectAllRows, setSelectAllRows] = useState<SelectAllRows>("none");
-  let selectedRows = useRef<IRowProps[]>([]).current
+  let selectedRows = useRef<IRowProps[]>([]).current;
   function isNumericRow(key: string): boolean {
     const currentColumn = columns.find((column) => column.id === key);
     return currentColumn?.isNumeric || false;
@@ -50,13 +50,13 @@ export function DataTable(props: IDataTableProps) {
 
   function addRow(row: IRowProps): void {
     const tempRows = [...selectedRows, row];
-    selectedRows = tempRows
+    selectedRows = tempRows;
     onSelectionChange(tempRows);
   }
 
   function removeRow(rowId: string): void {
     const filteredRows = selectedRows.filter((row) => row.id !== rowId);
-    selectedRows = filteredRows
+    selectedRows = filteredRows;
     onSelectionChange(filteredRows);
   }
 
@@ -88,14 +88,16 @@ export function DataTable(props: IDataTableProps) {
       <table className="table-auto w-full">
         <thead>
           <th>
-            <input
-              type="checkbox"
-              onChange={handleSelectAllRows}
-              className="p-4 place-self-center"
-              checked={selectAllRows === "all"}
-              id="selectAllBox"
-            />
-            <label htmlFor="selectAllBox">Select all</label>
+            <label htmlFor="selectAllBox">
+              <input
+                type="checkbox"
+                onChange={handleSelectAllRows}
+                className="p-4 place-self-center"
+                checked={selectAllRows === "all"}
+                id="selectAllBox"
+              />
+              Select all
+            </label>
           </th>
           {columns.map(({ label, isNumeric, id, width }: IColumnProps) => (
             <th
@@ -105,6 +107,7 @@ export function DataTable(props: IDataTableProps) {
               style={{
                 width: width || "initial",
               }}
+              data-testid="table-head"
             >
               {label}
             </th>

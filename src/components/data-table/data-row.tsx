@@ -49,12 +49,14 @@ export default function DataRow({
       key={row.id}
       onClick={() => onRowClick(row, idx)}
       className={clsx(isSelected && "bg-green-700 text-white", "border p-4")}
+      data-testid="table-row"
     >
       <input
         type="checkbox"
         onChange={handleSelectionChange}
         className="p-4 m-4 place-self-center"
         checked={isSelected}
+        data-testid="row-box"
       />
       {getRowProps(row).map(([key,], idx) => {
         return (

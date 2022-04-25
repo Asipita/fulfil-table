@@ -4,6 +4,29 @@ import { DataTable, IRowProps } from "./components";
 import { usePosts } from "./hooks";
 
 // TO-DO make sure no two IDs are the same
+
+const TableColumns  = [
+  {
+    id: "id",
+    label: "ID",
+    isNumeric: false,
+  },
+  {
+    id: "title",
+    label: "Title",
+    isNumeric: false,
+  },
+  {
+    id: "url",
+    label: "URL",
+    isNumeric: false,
+  },
+  {
+    id: "thumbnailUrl",
+    label: "Thumbnail URL",
+    isNumeric: true,
+  },
+]
 function App() {
   const [page, setPage] = useState<number>(0);
   const [rows, setRows] = useState<any[]>([])
@@ -49,28 +72,7 @@ function App() {
   return (
     <div className="p-8 border-4 border-green-300">
       <DataTable
-        columns={[
-          {
-            id: "id",
-            label: "ID",
-            isNumeric: false,
-          },
-          {
-            id: "title",
-            label: "Title",
-            isNumeric: false,
-          },
-          {
-            id: "url",
-            label: "URL",
-            isNumeric: false,
-          },
-          {
-            id: "thumbnailUrl",
-            label: "Thumbnail URL",
-            isNumeric: true,
-          },
-        ]}
+        columns={TableColumns}
         rows={rows}
         onSelectionChange={handleRowSelection}
         onRowClick={handleRowClick}
