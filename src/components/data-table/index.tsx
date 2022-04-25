@@ -1,19 +1,28 @@
-import { useRef, useState } from "react";
-import { useDeHighlightAllRows, useGetCorrespondingColumns, useGetRowProps, useHighlightAllRows, useIsNumericRow } from "../../hooks";
-import { IColumnProps, IDataTableProps, IRowProps, SelectAllRows } from "../../interfaces";
+import {
+  useDeHighlightAllRows,
+  useGetCorrespondingColumns,
+  useGetRowProps,
+  useHighlightAllRows,
+  useIsNumericRow,
+} from "hooks/";
+import { IColumnProps, IDataTableProps, IRowProps, SelectAllRows } from "interfaces";
+import { useRef, useState } from "react"
 import DataRow from "./data-row";
-
 
 export function DataTable(props: IDataTableProps) {
   const [selectAllRows, setSelectAllRows] = useState<SelectAllRows>("none");
   const { columns, rows, onRowClick, onSelectionChange } = props;
-  
-  const isNumericRow = useIsNumericRow(columns)
-  const getRowProps = useGetRowProps(columns)
-  const getCorrespondingColumn = useGetCorrespondingColumns(columns)
-  const highlightAllRows = useHighlightAllRows(rows, setSelectAllRows, addRow)
-  const deHighlightAllRows = useDeHighlightAllRows(rows, setSelectAllRows, removeRow)
-  
+
+  const isNumericRow = useIsNumericRow(columns);
+  const getRowProps = useGetRowProps(columns);
+  const getCorrespondingColumn = useGetCorrespondingColumns(columns);
+  const highlightAllRows = useHighlightAllRows(rows, setSelectAllRows, addRow);
+  const deHighlightAllRows = useDeHighlightAllRows(
+    rows,
+    setSelectAllRows,
+    removeRow
+  );
+
   let selectedRows = useRef<IRowProps[]>([]).current;
 
   function addRow(row: IRowProps): void {
@@ -21,7 +30,6 @@ export function DataTable(props: IDataTableProps) {
     selectedRows = tempRows;
     onSelectionChange(tempRows);
   }
-  
 
   function removeRow(rowId: string): void {
     const filteredRows = selectedRows.filter((row) => row.id !== rowId);

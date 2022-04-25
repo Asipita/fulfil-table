@@ -1,6 +1,7 @@
 import clsx from "clsx";
+import { IDataRowProps } from "interfaces";
 import { useState, ChangeEvent, useEffect } from "react";
-import { IDataRowProps } from "../../interfaces";
+// import { IDataRowProps } from "../../interfaces";
 
 export default function DataRow({
   onRowClick,

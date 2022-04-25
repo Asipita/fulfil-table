@@ -1,8 +1,8 @@
+import { DataTable } from "components";
+import { usePosts } from "hooks";
+import { IRowProps } from "interfaces";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { DataTable } from "./components";
-import { usePosts } from "./hooks";
-import { IRowProps } from "./interfaces";
 
 // TO-DO make sure no two IDs are the same
 
