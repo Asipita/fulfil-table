@@ -1,26 +1,7 @@
-import { ReactNode, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { IColumnProps, IDataTableProps, IRowProps, SelectAllRows } from "../../interfaces";
 import DataRow from "./data-row";
-interface IDataTableProps {
-  columns: Array<IColumnProps>;
-  rows: any;
-  onRowClick(arg0: IRowProps, arg1: number): void;
-  onSelectionChange(arg0: IRowProps[]): void;
-}
 
-export interface IColumnProps {
-  id: string;
-  label: string;
-  isNumeric: boolean;
-  width?: string;
-}
-
-export interface IRowProps {
-  id: string;
-  title: ReactNode | number | string;
-  url: string;
-}
-
-export type SelectAllRows = "all" | "none" | "default";
 
 export function DataTable(props: IDataTableProps) {
   const { columns, rows, onRowClick, onSelectionChange } = props;

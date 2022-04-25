@@ -1,18 +1,6 @@
 import clsx from "clsx";
 import { useState, ChangeEvent, useEffect } from "react";
-import { IRowProps, SelectAllRows } from ".";
-
-export interface IDataRowProps {
-  onRowClick(arg0: IRowProps, arg1: number): void;
-  onSelectionChange(arg0: IRowProps[], arg1: number): void;
-  row: IRowProps;
-  isNumericRow(arg0: string): boolean;
-  getRowProps(arg0: any): Array<[arg1: any, arg2: any]>;
-  getCorrespondingColumn(arg0: number, arg1: IRowProps): string;
-  selectAllRows: SelectAllRows;
-  handleRows: [arg0: (arg0: IRowProps)=>void, arg1: (arg0: string)=>void];
-  idx: number;
-}
+import { IDataRowProps } from "../../interfaces";
 
 export default function DataRow({
   onRowClick,
