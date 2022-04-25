@@ -7018,6 +7018,11 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-intersection-observer@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.0.0.tgz#8d4c7ed51f98fb4cfdd80b35c8fdecd929f3a683"
+  integrity sha512-rVJ9ZTPnHk/rgMsNmWWLLz9DeUil8+2cR/wG2RAoOlJihmuxAfMVGnPYfy17kuKA1imCDfqIHjsy56fwGbtlTQ==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -7096,6 +7101,11 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-use-infinite-loading@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-use-infinite-loading/-/react-use-infinite-loading-1.1.5.tgz#cc835fff41f72165913c5cf9db51a9a1a96f2bc3"
+  integrity sha512-aiOfjAilPkO1O/tVkFZHsvGrJqyg6tWsON6os9DkL/j3jE3FF32ocBQiz5QkPtqR6fK+q/2kMHYCBEK4N8NQ4g==
 
 react@^18.0.0:
   version "18.0.0"
